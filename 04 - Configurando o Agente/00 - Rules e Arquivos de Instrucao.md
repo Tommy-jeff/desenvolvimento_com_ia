@@ -25,7 +25,7 @@ Não há mágica: ao iniciar uma sessão, a ferramenta **lê o arquivo de rules 
 | **Padrão emergente** | **`AGENTS.md`** — formato aberto que várias ferramentas leem | varia |
 
 > [!tip] Dica de portabilidade
-> O `AGENTS.md` virou um formato comum que várias ferramentas reconhecem. Se você quer que suas regras valham em mais de uma ferramenta, concentre o essencial nele e deixe que cada ferramenta o leia. Você já tem um exemplo real desse espírito no seu projeto: o `AI_GUIDELINES.md` do Veniti Mobile.
+> O `AGENTS.md` virou um formato comum que várias ferramentas reconhecem. Se você quer que suas regras valham em mais de uma ferramenta, concentre o essencial nele e deixe que cada ferramenta o leia. Você já tem um exemplo real desse espírito no seu projeto.
 
 ## Como usar da melhor maneira
 
