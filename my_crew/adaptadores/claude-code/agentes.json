@@ -1,0 +1,35 @@
+{
+  "_comentario": [
+    "Frontmatter dos agentes do Claude Code. O CORPO de cada um vem de metodo/papeis/<id>.md",
+    "e NÃO é duplicado aqui — o instalador concatena. Editar rubrica é em metodo/papeis/.",
+    "`tools` lista apenas ferramentas que existem em toda plataforma: PowerShell é só Windows,",
+    "e declará-la faria o mesmo arquivo mentir numa máquina Linux ou macOS."
+  ],
+  "agentes": {
+    "coder-reviewer": {
+      "name": "coder-reviewer",
+      "description": "Use SEMPRE que uma implementação de código terminar e antes de considerá-la pronta, para revisar se o CÓDIGO está correto — bugs, fronteiras de entrada, concorrência, segurança, adequação dos testes. Despache-o na MESMA mensagem que o delivery-inspector, nunca em série. Use SEMPRE também na rodada de verificação, porque as correções mudaram o código que ele aprovou. Ele grava os achados em retornos/coder-reviewer.json da pasta do item. Não use para julgar se o item foi cumprido — isso é o delivery-inspector.",
+      "tools": "Read, Edit, Write, Grep, Glob, Bash"
+    },
+    "delivery-inspector": {
+      "name": "delivery-inspector",
+      "description": "Use SEMPRE que uma implementação de código terminar e antes de considerá-la pronta, para auditar se a ENTREGA corresponde ao que a régua do item (quality.md, ou o contrato escrito) exigia — critérios de pronto, escopo DENTRO/FORA, testes obrigatórios, documentação. Despache-o na MESMA mensagem que o coder-reviewer, nunca em série. Ele grava os achados em retornos/delivery-inspector.json da pasta do item. Na rodada de verificação, volta só em dois casos: se tem achado seu aberto, ou se meta.criterios_de_pronto_tocados do engenheiro não veio []. Não use para julgar se o código está tecnicamente correto — isso é o coder-reviewer.",
+      "tools": "Read, Edit, Write, Grep, Glob, Bash"
+    },
+    "software-engineer": {
+      "name": "software-engineer",
+      "description": "Use depois que o delivery-inspector e o coder-reviewer gravarem seus achados em retornos/, para corrigir TODOS os abertos numa fila única e num ciclo só — nunca um ciclo por inspetor. Ele lê os dois JSONs do disco, avalia o mérito de cada achado, corrige na raiz, recusa com fundamento o que for improcedente, e escala ao dev o que exigir dependência nova ou re-decidir algo travado. Registra cada resposta em retornos/software-engineer.json. Não use para revisar nem para registrar veredito.",
+      "tools": "Read, Edit, Write, Grep, Glob, Bash"
+    },
+    "harness-scout": {
+      "name": "harness-scout",
+      "description": "Use para executar UMA fatia do roadmap de reconhecimento de um projeto — o levantamento só-leitura que produz a ficha que a tripulação consulta depois (comandos de verificação, convenção de teste, áreas sensíveis, aparelho de IA já instalado, quem comita). Uma fatia por sessão, com teto de leitura, citando a fonte de cada linha e marcando NÃO ENCONTRADO o que não achar. Não use para implementar, corrigir ou revisar nada, e não aciona a tripulação.",
+      "tools": "Read, Write, Grep, Glob, Bash"
+    }
+  },
+  "skill": {
+    "id": "roadmap-driven-development",
+    "name": "roadmap-driven-development",
+    "description": "Use ao planejar implementações de porte médio para cima em qualquer projeto — criar/estruturar um roadmap, decidir se uma tarefa merece roadmap ou implementação direta, fatiar trabalho em itens auto-contidos executáveis por sessões isoladas, atribuir ou executar um item, reconhecer um projeto novo antes do primeiro item, graduar um roadmap maduro para documento normativo, ou encerrar/arquivar um roadmap concluído. Agnóstica de linguagem e stack — as regras específicas do projeto (comandos de verificação, convenção de teste, aprovações, quem comita) vêm sempre da ficha do projeto, no pacote de desenvolvimento."
+  }
+}
