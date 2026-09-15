@@ -38,10 +38,25 @@ eliminou.
    escolha sua: **as duas leituras vão para a ficha**, e a divergência vira pergunta ao dev.
 4. **Consolide as listas** — áreas sensíveis, fronteiras humanas, classes de arquivo, testes de
    referência, documentos normativos, aparelho de IA existente.
-5. **Junte todas as perguntas ao dev** das sete fatias numa lista só, sem editar o texto de
-   nenhuma. Marque quais delas **travam** um campo do frontmatter: são essas que impedem a
-   aprovação.
-6. **Prepare o ponteiro.** A partir de `metodo/modelos/ponteiro-no-projeto.md`, deixe o texto
+5. **Funda as perguntas, não as empilhe.** Sete fatias perguntam de forma independente, e o
+   mesmo assunto reaparece em várias — no primeiro uso real, 59 perguntas para 16 bloqueios,
+   com o manifesto perguntado em sete fatias diferentes. Duas perguntas que se resolvem pelo
+   **mesmo campo do frontmatter** ou pela **mesma decisão de fundo** viram uma: escolha a
+   redação mais clara, cite as fatias de origem, e preserve qualquer nuance que só uma delas
+   levantou.
+
+   ⚠️ **Teto de cinco bloqueantes.** Ficha que exige dezesseis respostas antes de valer não é
+   aprovada nunca — fica rascunho para sempre, e todo papel roda declarando que é rascunho.
+   Sobrou mais de cinco depois da fusão? As excedentes são resolvidas pelo default conservador
+   e marcadas `⊘ SUPOSIÇÃO`, exatamente como no modo sem dono. O dev pode promover qualquer
+   uma de volta a bloqueante; o que ele não pode é ser obrigado a responder dezesseis.
+
+6. **Se `dono_disponivel: nao`**, não sobra bloqueante nenhuma: **todas** viram `⊘ SUPOSIÇÃO`
+   com o default conservador, e `aprovado_pelo_dev: n/a`. A ficha fica utilizável no mesmo dia,
+   com a cegueira declarada em vez de escondida — que é o desfecho que o projeto fechado, de
+   terceiro, exige. As perguntas continuam registradas, para o dia em que houver a quem
+   perguntar.
+7. **Prepare o ponteiro.** A partir de `metodo/modelos/ponteiro-no-projeto.md`, deixe o texto
    pronto para o dev colar nos documentos que a fatia 04 identificou. **Você não cola** — não
    escreve no projeto.
 
@@ -49,12 +64,14 @@ eliminou.
 
 Antes de entregar, confira:
 
-- [ ] Todo campo do frontmatter está preenchido — com valor real ou com `NÃO ENCONTRADO`.
-- [ ] Nenhum valor foi inferido: cada um aponta para a fatia de origem.
-- [ ] `aprovado_pelo_dev: nao`.
-- [ ] As perguntas que travam campos do frontmatter estão marcadas como tal.
-- [ ] O índice cabe numa leitura rápida. Passou disso, o detalhe volta para a fatia de origem —
-      o índice **aponta**, as fatias **explicam**.
+- [ ] Todo campo do frontmatter está preenchido — com valor real, `NÃO ENCONTRADO`, ou
+      `⊘ SUPOSIÇÃO` com a razão do default.
+- [ ] Nenhum valor foi inferido **em silêncio**: cada um aponta para a fatia de origem, e o que
+      é suposição está marcado como suposição.
+- [ ] `aprovado_pelo_dev: nao` (ou `n/a`, se `dono_disponivel: nao`).
+- [ ] **No máximo cinco bloqueantes**, depois da fusão de equivalentes.
+- [ ] **O índice tem no máximo 120 linhas.** Conte. Passou, o detalhe volta para a fatia de
+      origem — o índice **aponta**, as fatias **explicam**.
 
 ## O que você entrega ao dev
 

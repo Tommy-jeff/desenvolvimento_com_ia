@@ -1,7 +1,7 @@
 # Reconhecimento 06 — Classes de arquivo
 
 > **Papel:** `metodo/papeis/harness-scout.md` — leia-o inteiro antes de começar.
-> **Só leitura.** Sem tripulação, sem gate. **Teto de leitura: 8 arquivos.**
+> **Só leitura.** Sem tripulação, sem gate. **Teto de leitura: 8 arquivos · teto de saída: 250 linhas.**
 > **Saída:** `<PACOTE>/projetos/<slug>/ficha/06-classes-de-arquivo.md`
 
 ## O que esta fatia responde

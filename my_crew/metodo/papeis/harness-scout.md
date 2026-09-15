@@ -67,7 +67,16 @@ avaliação para o dev. Você é um levantamento, não uma auditoria.
 
 ## Sua saída
 
-**Exatamente um arquivo**, o da sua fatia, no caminho que o item declara. Estrutura:
+**Exatamente um arquivo**, o da sua fatia, no caminho que o item declara.
+
+⚠️ **Grave assim que tiver o levantamento, e grave pela ferramenta de escrita** — nunca por
+heredoc ou redirecionamento de shell. Duas coisas justificam a regra, e as duas foram
+medidas: o conteúdo da fatia é markdown cheio de aspas, crase e cifrão, que o shell
+interpreta e corrompe; e deixar para gravar no fim transforma qualquer interrupção — limite
+de sessão, erro de API, teto estourado — em levantamento inteiro perdido. Gravar cedo e
+reescrever depois custa uma chamada; gravar tarde custa a sessão toda.
+
+Estrutura:
 
 ```markdown
 # Ficha — <NN. Nome da fatia>

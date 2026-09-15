@@ -20,7 +20,12 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const PACOTE = path.dirname(fileURLToPath(import.meta.url));
-const MARCA = 'gerado pelo pacote de desenvolvimento — edite em metodo/, não aqui';
+// O prefixo é ESTÁVEL entre versões: é por ele que se reconhece um arquivo nosso. A versão
+// entra depois, para que a instalação saiba que está trocando a geração do método por outra.
+const MARCA_PREFIXO = 'gerado pelo pacote de desenvolvimento';
+const VERSAO = '1.1.0';
+const MARCA = `${MARCA_PREFIXO} v${VERSAO} — edite em metodo/, não aqui`;
+const RX_VERSAO = new RegExp(`${MARCA_PREFIXO} v([0-9][^ ]*)`);
 const PAPEIS = ['coder-reviewer', 'delivery-inspector', 'software-engineer', 'harness-scout'];
 
 const args = process.argv.slice(2);
@@ -56,7 +61,15 @@ function escrever(destino, conteudo, { marcado = true } = {}) {
       relatorio.preservados.push(`${rotulo} (idêntico)`);
       return;
     }
-    if (marcado && !atual.includes(MARCA) && !FORCAR) {
+    // Troca de geração: o arquivo é nosso, mas de outra versão do método. Vale avisar, não
+    // bloquear — o que é perigoso aqui não é a troca, é ela passar despercebida (ver abaixo).
+    const versaoAtual = atual.match(RX_VERSAO)?.[1];
+    if (versaoAtual && versaoAtual !== VERSAO) {
+      relatorio.avisos.push(
+        `${rotulo}: substituindo a geração v${versaoAtual} pela v${VERSAO} do método.`,
+      );
+    }
+    if (marcado && !atual.includes(MARCA_PREFIXO) && !FORCAR) {
       const lado = `${destino}.novo`;
       if (!SIMULAR) {
         mkdirSync(path.dirname(lado), { recursive: true });
@@ -87,6 +100,16 @@ function cabecalhoYaml(campos) {
 function instalarClaudeCode() {
   const cfg = JSON.parse(ler('adaptadores/claude-code/agentes.json'));
   const home = path.join(os.homedir(), '.claude');
+
+  // ⚠️ ~/.claude/agents é NÍVEL DE USUÁRIO: instalar "para um projeto" muda o comportamento
+  // de TODOS os projetos desta máquina. Medido no veniti, cujos retornos já em disco foram
+  // escritos por uma geração anterior dos mesmos papéis.
+  relatorio.avisos.push(
+    `os ${PAPEIS.length} papéis vão para ${path.join(home, 'agents')} — NÍVEL DE USUÁRIO. ` +
+      'Isso altera o comportamento de TODOS os projetos desta máquina, não só do que você passou ' +
+      'em --projeto. Retornos já gravados por uma geração anterior continuam válidos, mas não ' +
+      'carregam os campos que a geração nova espera.',
+  );
 
   for (const id of PAPEIS) {
     const meta = cfg.agentes[id];
@@ -203,7 +226,11 @@ function instalarGate() {
     const lado = path.join(projeto, '.crew', 'hooks-para-mesclar.json');
     escrever(lado, `${JSON.stringify({ hooks: bloco }, null, 2)}\n`, { marcado: false });
     relatorio.avisos.push(
-      '.claude/settings.json JÁ TEM hooks — não mexi. O bloco a mesclar está em .crew/hooks-para-mesclar.json.',
+      '.claude/settings.json JÁ TEM hooks — NÃO mexi, e não mexa você sem ler isto: dois gates ' +
+        'ocupando PreToolUse/Stop se substituem em SILÊNCIO e com FALHA ABERTA. O projeto fica ' +
+        'sem gate nenhum e ninguém percebe, porque a ausência de gate não emite sinal. Em ' +
+        'projeto que já tem aparelho, o caminho é FUNDIR, não instalar. O bloco a mesclar está ' +
+        'em .crew/hooks-para-mesclar.json.',
     );
     return;
   }

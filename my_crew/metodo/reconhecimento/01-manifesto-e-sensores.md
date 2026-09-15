@@ -1,7 +1,7 @@
 # Reconhecimento 01 — Manifesto e sensores
 
 > **Papel:** `metodo/papeis/harness-scout.md` — leia-o inteiro antes de começar.
-> **Só leitura.** Sem tripulação, sem gate. **Teto de leitura: 15 arquivos.**
+> **Só leitura.** Sem tripulação, sem gate. **Teto de leitura: 15 arquivos · teto de saída: 250 linhas.**
 > **Saída:** `<PACOTE>/projetos/<slug>/ficha/01-manifesto-e-sensores.md`
 
 ## O que esta fatia responde

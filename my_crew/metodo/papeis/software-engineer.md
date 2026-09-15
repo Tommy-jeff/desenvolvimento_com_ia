@@ -14,6 +14,8 @@ coerente onde os dois se cruzam no mesmo arquivo.
 1. A **ficha do projeto** — `<PACOTE>/projetos/<slug>/indice.md`, pelo procedimento de
    descoberta. Dela saem: `manifesto_rapido`, `quem_comita`, `idioma_dos_retornos`, a política
    de dependências e licenças, as áreas de dono humano e os **testes de referência**.
+   ⚠️ Campo marcado `⊘ SUPOSIÇÃO` foi resolvido por default conservador, não levantado: use-o,
+   e diga no seu retorno que o usou.
 2. A **régua** inteira do item — `brief.md` + **`quality.md`** (Escopo, Arquivos a tocar,
    Orçamentos, DoD, e a CLASSIFICAÇÃO DE ACHADOS que os inspetores usaram). Trabalho fora de
    roadmap: o contrato mínimo.
@@ -57,8 +59,16 @@ estourou, **pare e escale**, nunca amplie o teto de dentro da unidade.
 ## Ao final, entregue
 
 1. **O seu arquivo de retorno**, `retornos/software-engineer.json` — a chave `rodada_N` da
-   rodada corrente, por edição incremental, nunca por reescrita. Conteúdo no idioma que a ficha
-   declarar. **Uma entrada por achado analisado:**
+   rodada corrente, por edição incremental, nunca por reescrita. Conteúdo no idioma que a
+   ficha declarar.
+
+   ⚠️ **Grave a entrada de cada achado assim que o resolver**, não todas no fim. A correção é o
+   passo mais longo do ciclo, e trabalho que só persiste no fim é o que uma interrupção come
+   inteiro — limite de sessão, erro de API, teto estourado. E grave pela ferramenta de edição:
+   **nunca por heredoc ou redirecionamento de shell**, que corrompe aspas, crase e cifrão do
+   conteúdo.
+
+   **Uma entrada por achado analisado:**
 
    - `id` (`se-` + sufixo único) · `origem_id` (o achado) · `agente_id` (quem o criou);
    - `status`: `corrigido` | `recusado` | `debito` | `escalado_ao_dev`;

@@ -4,7 +4,8 @@ projeto: <nome legível>
 slug: <host/owner/repo — ou o nome da pasta, sem remote>
 raiz: <caminho absoluto do worktree nesta máquina>
 reconhecido_em: <AAAA-MM-DD>
-aprovado_pelo_dev: nao            # nao | sim — a tripulação avisa enquanto for "nao"
+dono_disponivel: sim              # sim | nao — há alguém com autoridade para responder?
+aprovado_pelo_dev: nao            # nao | sim | n/a — "n/a" quando dono_disponivel: nao
 nivel_de_rigor: observador        # observador | consultivo | normativo
 idioma_dos_retornos: pt-BR        # idioma do CONTEÚDO dos retornos/*.json
 quem_comita: dev                  # dev | sessao
@@ -19,6 +20,23 @@ manifesto_completo: "<comando da suíte inteira>"
 > Ponto de entrada da tripulação neste projeto. Montada pelo roadmap de reconhecimento; as
 > fatias com as fontes de cada linha estão em `ficha/`. **Enquanto `aprovado_pelo_dev: nao`,
 > todo papel trata esta ficha como rascunho e declara isso no limite da revisão.**
+
+> ⚠️ **Teto: 120 linhas.** Este arquivo é lido por todo papel em toda implementação — cada
+> linha a mais é paga muitas vezes. O índice **aponta**; as fatias **explicam**. Estourou o
+> teto, o detalhe volta para a fatia de origem.
+
+**Quando não há dono (`dono_disponivel: nao`):** projeto fechado, de terceiro, ou sem ninguém
+com autoridade para responder. A ficha então **não trava** — cada pergunta bloqueante é
+resolvida pelo default mais conservador e marcada assim:
+
+```
+⊘ SUPOSIÇÃO — <valor adotado>. Default conservador porque <razão>. Origem: <fatia>.
+```
+
+**Suposição nunca se confunde com fato levantado**, e é essa distinção que faz o modo valer:
+todo papel que consome um campo marcado `⊘` o declara em `meta.limite_da_revisao`. Conservador
+aqui significa **a escolha que reduz a chance de a tripulação aprovar algo ruim** — e, no
+empate, a que menos interfere no processo do projeto.
 
 ## O que este projeto é
 

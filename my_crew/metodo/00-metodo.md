@@ -39,6 +39,22 @@ implementação é caro, impreciso, e em janela de contexto apertada simplesment
 encontrado: declare para o que isso te cega e siga — não preencha o buraco com o que "costuma
 ser".
 
+### Quando não há dono a quem perguntar
+
+O reconhecimento termina com perguntas que só uma pessoa responde. Num projeto seu, isso é uma
+conversa. **Num projeto fechado, de terceiro, ou sem interlocutor, não há essa conversa** — e
+esse é justamente o cenário para o qual este pacote existe. Um método que só sabe travar
+produz, ali, uma ficha que nunca é aprovada e que todo papel roda declarando como rascunho.
+
+Por isso a ficha declara `dono_disponivel`. Com `nao`, cada pergunta que travaria um campo é
+resolvida pelo **default mais conservador** e marcada `⊘ SUPOSIÇÃO`, com a razão. Conservador
+significa a escolha que reduz a chance de a tripulação **aprovar algo ruim** — e, no empate, a
+que menos interfere no processo do projeto. Exemplos: manifesto duvidoso vira o completo;
+severidade duvidosa vira o piso mais alto; `quem_comita` duvidoso vira `dev`.
+
+A ficha fica utilizável no mesmo dia, com a cegueira **declarada** em vez de escondida — e as
+perguntas continuam registradas, para o dia em que houver a quem perguntar.
+
 ## 2. Quando criar um roadmap
 
 Criar quando **2 ou mais** forem verdadeiros:

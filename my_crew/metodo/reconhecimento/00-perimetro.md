@@ -1,7 +1,7 @@
 # Reconhecimento 00 — Perímetro
 
 > **Papel:** `metodo/papeis/harness-scout.md` — leia-o inteiro antes de começar.
-> **Só leitura.** Sem tripulação, sem gate. **Teto de leitura: 10 arquivos.**
+> **Só leitura.** Sem tripulação, sem gate. **Teto de leitura: 10 arquivos · teto de saída: 250 linhas.**
 > **Saída:** `<PACOTE>/projetos/<slug>/ficha/00-perimetro.md`
 
 ## O que esta fatia responde

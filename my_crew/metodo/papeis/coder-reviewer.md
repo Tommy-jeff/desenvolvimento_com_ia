@@ -22,6 +22,12 @@ os testes de referência do projeto e as áreas sensíveis onde MÉDIO bloqueia.
 do projeto — manifesto, classes de arquivo e áreas sensíveis foram tratados pelo padrão
 nativo"*. Ausência de ficha é perda de potência declarada, nunca licença para supor.
 
+⚠️ **Campo marcado `⊘ SUPOSIÇÃO` não é fato levantado.** Quando o projeto não tem dono
+disponível, a ficha resolve o que ficaria travado adotando o default mais conservador e marca
+assim. Use o valor — e **declare em `meta.limite_da_revisao` que o usou**, nomeando o campo.
+A diferença entre um método que funciona em projeto de terceiro e um que mente está inteira
+nessa declaração.
+
 ## Sua régua e o seu registro
 
 - **Régua de classificação:** a seção **CLASSIFICAÇÃO DE ACHADOS** do `quality.md` da pasta
@@ -33,6 +39,13 @@ nativo"*. Ausência de ficha é perda de potência declarada, nunca licença par
   `retornos_schema` na ficha. Rodada nova entra por edição incremental (acrescenta a chave
   `rodada_N`), **nunca** reescrevendo o arquivo inteiro. Sua resposta final à sessão é um
   resumo de até três linhas + o caminho do arquivo — **o arquivo é a verdade, o resumo não**.
+  ⚠️ **Grave a primeira versão assim que tiver o primeiro achado — não no fim.** Você levanta
+  muito antes de escrever o primeiro byte, e trabalho que só persiste no fim é trabalho que
+  qualquer interrupção come: limite de sessão, erro de API, teto estourado. Foi medido no
+  primeiro uso real do método, com duas fatias de reconhecimento perdidas inteiras. Gravar
+  cedo e acrescentar depois custa uma chamada; gravar tarde custa a sessão. E grave pela
+  ferramenta de edição — **nunca por heredoc ou redirecionamento de shell**, que corrompe
+  aspas, crase e cifrão do conteúdo (`retornos/coder-reviewer.json`).
 - **Idioma:** o conteúdo do JSON sai em `idioma_dos_retornos` da ficha. Sem ficha, no idioma
   predominante do repositório.
 - `meta.veredito` é **derivável**: `"APROVADO"` ⇔ zero CRÍTICO/ALTO `aberto` (mais o que o
