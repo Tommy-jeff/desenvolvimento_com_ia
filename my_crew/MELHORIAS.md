@@ -100,6 +100,27 @@ leva os agentes nem a skill.**
 ### ⏸️ ABERTO ⚪ 10. `retornos/` no nível do tema em `endpoints-residuais-v2`
 **Origem:** auditoria de 2026-09-13. Três JSONs de ~35 KB comitados no nível do tema, além dos por item. Resíduo do formato antigo.
 
+### ⏸️ BLOQUEADO 🔴 14. Recolher a geração anterior para fora do caminho de descoberta
+`arquivo/` · **Origem:** decisão do dev, 2026-09-15. Enquanto um papel de geração anterior
+estiver em `.claude/` de um projeto, uma sessão nova o carrega e roda o método errado — e
+agente de projeto **vence** o de usuário por precedência, então o resíduo silencia o pacote
+sem emitir sinal. Destino definido: `arquivo/<slug>/<caminho original>/`, com data e motivo
+na tabela do `arquivo/LEIA-ME.md`.
+
+**Alvos levantados (varredura de 2026-09-15 — 4, contra 9 skills de projeto que NÃO se toca):**
+
+| Alvo | Natureza | Referências a consertar | Libera quando |
+|---|---|---|---|
+| `hispaniola/.claude/agents/{coder-reviewer,delivery-inspector,software-engineer}.md` | resíduo puro da geração anterior; rastreados no git | a seção de tripulação do `CLAUDE.md` de lá | fatia 04 do reconhecimento da hispaniola |
+| `clinity/.claude/skills/roadmap-delivery-review/` | **NÃO é resíduo puro** | `CLAUDE.md` (2×, instrução ativa) + 2 docs históricos de roadmap (não reescrever) | fatia 04 do reconhecimento do clinity |
+
+⚠️ **O caso do clinity é o que justifica o bloqueio.** A skill de lá é ancestral do
+`delivery-inspector`, mas carrega conhecimento de domínio que a tripulação nova **não**
+substitui: isolamento por clínica, RLS, e um roteiro de QA e2e obrigatório. Recolhê-la
+inteira trocaria o problema da precedência por perda de critério de aceite. Isso não é
+remoção — é fusão, e fusão sem a fatia 04 é exatamente o que a regra "fundir, não instalar"
+existe para impedir.
+
 ---
 
 ## Decisões em aberto

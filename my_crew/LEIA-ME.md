@@ -59,6 +59,42 @@ Todo papel resolve o caminho do pacote e da ficha assim, sem nunca hardcodar um 
 ela carregaria: pare e peça o reconhecimento. Ficha ausente é ausência de instrumento, nunca
 permissão para supor.
 
+## Tornar padrão numa máquina
+
+O passo 1 da descoberta precisa resolver **sem ninguém informar caminho**. Enquanto ele não
+resolve, todo papel depende de receber o caminho absoluto na mão — e um papel que depende de
+ser informado não é padrão, é exceção repetida.
+
+Escolha **uma** âncora, e só uma:
+
+| Âncora | Quando usar | Como |
+|---|---|---|
+| `~/dev-crew` | o caso normal | junção/symlink de diretório apontando para onde o pacote de fato mora |
+| `$DEV_CREW_HOME` | o pacote mora em disco removível, ou há mais de um | variável de ambiente de usuário |
+| ponteiro no projeto | máquina que você não configura | a linha de `metodo/modelos/ponteiro-no-projeto.md` |
+
+No Windows, a junção não exige privilégio elevado:
+
+```powershell
+New-Item -ItemType Junction -Path "$HOMEdev-crew" -Target "<onde o pacote mora>"
+```
+
+Em macOS ou Linux, `ln -s "<onde o pacote mora>" ~/dev-crew`.
+
+⚠️ **Âncora é atalho, não cópia.** Se você copiar o pacote para `~/dev-crew` em vez de apontar
+para ele, passa a ter duas cópias que ninguém compara — e duas cópias que ninguém compara
+viram duas gerações do método, sendo que a errada é sempre a que alguém está usando.
+
+### Espelhos
+
+Cópias de backup se sincronizam por `node espelhar.mjs`, que **confere** o resultado em vez de
+confiar nele. Os destinos vêm de `espelhos.json`, que é dado de máquina. `--verificar` só
+compara, sem escrever.
+
+Arquivo que existe no espelho e não no canônico é reportado como `sobrando` e **nunca** é
+removido automaticamente: apagar arquivo de um diretório que não é o canônico é a operação
+deste pacote que não dá para desfazer.
+
 ## Níveis de rigor
 
 Ninguém liga um gate bloqueante num repositório maduro no primeiro dia. A ficha declara em

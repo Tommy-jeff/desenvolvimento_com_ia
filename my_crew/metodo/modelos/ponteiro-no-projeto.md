@@ -12,8 +12,8 @@ o projeto for tocado por mais de uma ferramenta.
 ## Versão curta (uma linha — use quando o projeto não é seu)
 
 ```markdown
-> Pacote de desenvolvimento: `<caminho absoluto>` — método, papéis de revisão e a ficha
-> deste projeto em `projetos/<slug>/`. Começar por `LEIA-ME.md`.
+> Pacote de desenvolvimento: `~/dev-crew` — método, papéis de revisão e a ficha deste
+> projeto em `projetos/<slug>/`. Começar por `LEIA-ME.md`.
 ```
 
 ## Versão completa (use quando você controla o documento)
@@ -22,7 +22,9 @@ o projeto for tocado por mais de uma ferramenta.
 ## Pacote de desenvolvimento
 
 O método de planejamento e revisão usado neste projeto mora **fora do repositório**, em
-`<caminho absoluto>`. Nada dele é comitado aqui.
+`~/dev-crew` (a âncora da máquina — veja `LEIA-ME.md` do pacote). Nada dele é comitado aqui.
+Prefira a âncora ao caminho absoluto: caminho absoluto envelhece na primeira vez que o pacote
+muda de lugar, e quem paga é a sessão que vier depois.
 
 - **Método e papéis:** `metodo/` — comece por `LEIA-ME.md`.
 - **Ficha deste projeto:** `projetos/<slug>/indice.md` — os fatos operacionais (comandos de

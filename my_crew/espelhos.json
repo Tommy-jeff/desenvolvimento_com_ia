@@ -1,0 +1,14 @@
+{
+  "_comentario": [
+    "DADO DE MÁQUINA, não do método: onde ESTA máquina guarda cópias do pacote.",
+    "O canônico é o diretório que contém este arquivo; os espelhos são derivados dele.",
+    "Em outra máquina, este arquivo terá outros caminhos — ou simplesmente não existirá.",
+    "Caminhos com barra normal de propósito: o Node os resolve no Windows, e barra invertida",
+    "em JSON exige escape duplo, que é fonte de erro silencioso e gratuito."
+  ],
+  "canonico_em": "C:/Users/thoma/Documents/my_cave/crew",
+  "ancora": "C:/Users/thoma/dev-crew (junction) — é por ela que a descoberta resolve",
+  "espelhos": [
+    "C:/Users/thoma/Documents/my_cave/desenvolvimento_com_ia/my_crew"
+  ]
+}
